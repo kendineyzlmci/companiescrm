@@ -22,7 +22,7 @@
                         <table id="users-list-datatable" class="table">
                             <thead>
                             <tr>
-                                <th>Adres</th>
+                                <th>Adresler</th>
                                 <th class="text-center">İşlemler</th>
                             </tr>
                             </thead>
