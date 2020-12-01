@@ -11,6 +11,16 @@ use Illuminate\Support\Facades\Storage;
 class UserController extends Controller
 {
 
+    public function index()
+    {
+        return view('backend.user.index');
+    }
+
+    public function add()
+    {
+        return view('backend.user.add');
+    }
+
     /**
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
@@ -90,7 +100,7 @@ class UserController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function update(Request $request, int $id): bool
+    public function update(Request $request, int $id)
     {
         $request->validate([
             'first_name'            => 'required|string|min:2|max:255',

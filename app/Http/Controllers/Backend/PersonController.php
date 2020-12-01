@@ -49,7 +49,7 @@ class PersonController extends Controller
      * @param int $id
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function update(Request $request, int $id): bool
+    public function update(Request $request, int $id)
     {
         $redirectUrl = 'company/show/' . $request->get('company_id') . '#companyperson';
 
