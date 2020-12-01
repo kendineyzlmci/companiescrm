@@ -10,9 +10,17 @@ class Company extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = ['name', 'website', 'html','image','addresses'];
+    protected $fillable = [
+        'name',
+        'website',
+        'html',
+        'image',
+        'addresses'
+    ];
 
-
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function companyAddress()
     {
         return $this->belongsTo(CompanyAddress::class, 'company_id', 'id');
@@ -21,18 +29,13 @@ class Company extends Model
     /**
      * @return false|string
      */
-    public function getCompanyCreatedAtDateAttribute(){
-        return date('d.m.Y', strtotime($this->created_at));
-    }
-
-    public function getCompanyUpdatedAtDateAttribute(){
-        return date('d.m.Y', strtotime($this->updated_at));
-    }
-
     public function getCompanyCreatedAtAttribute(){
         return date('d.m.Y H:i', strtotime($this->created_at));
     }
 
+    /**
+     * @return false|string
+     */
     public function getCompanyUpdatedAtAttribute(){
         return date('d.m.Y H:i', strtotime($this->updated_at));
     }

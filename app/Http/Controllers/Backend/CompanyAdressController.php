@@ -20,7 +20,7 @@ class CompanyAdressController extends Controller
 
         if ($companyCtrl != 0) {
             $companyInfo = Company::where('id',$id)->first();
-            return view('backend.company.add_contact',['companyInfo'=>$companyInfo]);
+            return view('backend.company.add-contact',['companyInfo'=>$companyInfo]);
         }
 
         abort(404);
@@ -61,7 +61,7 @@ class CompanyAdressController extends Controller
 
         if ($companyAddressCtrl != 0) {
             $companyAddressInfo = CompanyAddress::with('company')->where('id',$id)->first();
-            return view('backend.company.edit_contact',['companyAddressInfo'=>$companyAddressInfo]);
+            return view('backend.company.edit-contact',['companyAddressInfo'=>$companyAddressInfo]);
         }
 
         abort(404);

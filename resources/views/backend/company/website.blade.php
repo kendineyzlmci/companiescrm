@@ -1,3 +1,3 @@
-<?php
-    header('Content-Type: text/html');
-    echo $companyInfo->html;
+<?php header('Content-Type: text/html'); ?>
+    {!! $companyInfo->html !!}
+
