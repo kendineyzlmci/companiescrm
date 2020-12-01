@@ -4,7 +4,7 @@
         <h5 class="breadcrumbs-title mt-0 mb-0"><span>{{ $companyAddressInfo->company['name'] }} | Adres Düzenle</span></h5>
     </div>
     <div class="col s2 m6 l6">
-        <a href="{{ route('company.show',['id'=>$companyAddressInfo->id]) }}" class="ml-3 btn-floating waves-effect waves-light amber darken-4 tooltipped right" data-position="bottom" data-tooltip="Geri"><i class="material-icons left">arrow_back</i></a>
+        <a href="{{ route('company.show',['id'=>$companyAddressInfo->company['id']]) }}" class="ml-3 btn-floating waves-effect waves-light amber darken-4 tooltipped right" data-position="bottom" data-tooltip="Geri"><i class="material-icons left">arrow_back</i></a>
     </div>
 @endsection
 @section('content')
