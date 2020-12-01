@@ -30,13 +30,13 @@ class Company extends Model
      * @return false|string
      */
     public function getCompanyCreatedAtAttribute(){
-        return date('d.m.Y H:i', strtotime($this->created_at));
+        return Carbon::parse($this->createdAt)->format('d.m.Y');
     }
 
     /**
      * @return false|string
      */
     public function getCompanyUpdatedAtAttribute(){
-        return date('d.m.Y H:i', strtotime($this->updated_at));
+        return Carbon::parse($this->createdAt)->format('d.m.Y');
     }
 }

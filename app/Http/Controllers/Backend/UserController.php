@@ -19,11 +19,11 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'first_name'            => 'required|string|min:2|max:255',//['required', 'string', 'max:255'],
-            'last_name'             => 'required|string|min:2|max:255',
-            'phone'                 => 'required|string|min:2|max:255',
+            'first_name'            => 'required|string|min:1|max:255',
+            'last_name'             => 'required|string|min:1|max:255',
+            'phone'                 => 'required|string|min:1|max:255',
             'email'                 => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password'              => ['required', 'string', 'min:8', 'confirmed'],
+            'password'              => ['required', 'string', 'min:8', 'max:255', 'confirmed'],
             'password_confirmation' => 'required'
         ]);
 
@@ -94,10 +94,10 @@ class UserController extends Controller
     {
         $request->validate([
             'first_name'            => 'required|string|min:2|max:255',
-            'last_name'             => ['required', 'string', 'max:255'],
-            'phone'                 => ['required', 'string', 'max:255'],
+            'last_name'             => 'required|string|min:2|max:255',
+            'phone'                 => 'required|string|min:2|max:255',
             'email'                 => 'required|email|unique:users,email,' . $id,
-            'password'              => ['nullable', 'string', 'min:8', 'confirmed'],
+            'password'              => ['nullable', 'string', 'min:8','max:255', 'confirmed'],
             'password_confirmation' => 'nullable'
         ]);
 

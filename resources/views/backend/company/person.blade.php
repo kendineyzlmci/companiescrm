@@ -108,7 +108,7 @@
                                 <td class="text-center">{{ $value->title }}</td>
                                 <td class="text-center"><a href="tel:{{ $value->phone  }}" class=" tooltipped" data-position="bottom" data-tooltip="Hemen Ara">{{ $value->phone }}</a></td>
                                 <td class="text-center"><a href="mailto:{{ $value->email }}" class=" tooltipped" data-position="bottom" data-tooltip="Eposta Gönder">{{ $value->email }}</a></td>
-                                <td class="text-center">{{ $value->PersonUpdatedAtDate }}</td>
+                                <td class="text-center">{{ $value->PersonUpdatedAt }}</td>
                                 <td class="text-center">
                                     <a onclick="personeditfunc('{{ $value->id }}')" class="tooltipped" data-position="bottom" data-tooltip="Düzenle" id="personeditbutton{{ $value->id }}"><i class="material-icons green-text">edit</i></a>
                                     <a onclick="personcancelfunc('{{ $value->id }}')"  class="tooltipped" data-position="bottom" data-tooltip="Vazgeç" id="personcancelbutton{{ $value->id }}" style="display: none"><i class="material-icons red-text">cancel</i></a>

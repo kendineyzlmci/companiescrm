@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -29,14 +30,14 @@ class Person extends Model
     /**
      * @return false|string
      */
-    public function getPersonCreatedAtAttribute(){
-        return date('d.m.Y H:i', strtotime($this->created_at));
+    public function getPersonCreatedAtAttribute($item){
+        return Carbon::parse($this->createdAt)->format('d.m.Y');
     }
 
     /**
      * @return false|string
      */
     public function getPersonUpdatedAtAttribute(){
-        return date('d.m.Y H:i', strtotime($this->updated_at));
+        return Carbon::parse($this->updatedAt)->format('d.m.Y');
     }
 }

@@ -18,9 +18,12 @@ class PersonController extends Controller
         $redirectUrl = 'company/show/' . $request->get('company_id') . '#companyperson';
 
         $request->validate([
-            'name' => 'required|string|min:2|max:255',
-            'surname' => 'required|string|min:2|max:255',
-            'company_id' => 'required'
+            'name' => 'required|string|min:1|max:255',
+            'surname' => 'required|string|min:1|max:255',
+            'title' => 'required|string|min:1|max:255',
+            'phone' => 'required|string|min:1|max:255',
+            'email' => 'required|string|min:1|max:255',
+            'company_id' => 'required|integer'
         ]);
 
         $person = new Person();
@@ -51,9 +54,12 @@ class PersonController extends Controller
         $redirectUrl = 'company/show/' . $request->get('company_id') . '#companyperson';
 
         $request->validate([
-            'name' => 'required|string|min:2|max:255',
-            'surname' => 'required|string|min:2|max:255',
-            'company_id' => 'required'
+            'name' => 'required|string|min:1|max:255',
+            'surname' => 'required|string|min:1|max:255',
+            'title' => 'required|string|min:1|max:255',
+            'phone' => 'required|string|min:1|max:255',
+            'email' => 'required|string|min:1|max:255',
+            'company_id' => 'required|integer'
         ]);
 
         $person = Person::findOrFail($id);
