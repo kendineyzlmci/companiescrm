@@ -35,7 +35,7 @@ class PersonController extends Controller
         $person->company_id = $request->get('company_id');
         $person->save();
 
-        if($person){
+        if($person) {
             toastr()->success("Personel eklendi.");
             return redirect($redirectUrl);
         }
@@ -71,7 +71,7 @@ class PersonController extends Controller
         $person->company_id = $request->get('company_id');
         $person->save();
 
-        if($person){
+        if($person) {
             toastr()->success("Personel güncellendi.");
             return redirect($redirectUrl);
         }
@@ -90,7 +90,7 @@ class PersonController extends Controller
         $personInfo = Person::where('id', $id)->first();
         $destroy = Person::destroy($id);
 
-        if($destroy){
+        if($destroy) {
             toastr()->success('Silme İşlemi Başarıyla Gerçekleşti!');
             return redirect('company/show/' . $personInfo->company_id . '#companyperson');
         }

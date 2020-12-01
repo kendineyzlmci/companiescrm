@@ -115,7 +115,7 @@ class CompanyController extends Controller
 
         $company->save();
 
-        if($company){
+        if($company) {
             toastr()->success("Şirket başarıyla güncellendi.");;
             return redirect()->route('company.show',['id'=>$company->id]);
         }
@@ -128,16 +128,16 @@ class CompanyController extends Controller
      * @param int $id
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function website(int $id){
-
+    public function website(int $id)
+    {
         $companyCtrl = Company::where('id', $id)->count();
 
         if ($companyCtrl != 0) {
             $companyInfo = Company::where('id',$id)->first();
             return view('backend.company.website',['companyInfo'=>$companyInfo]);
-        }else{
-            abort(404);
         }
+
+        abort(404);
     }
 
     /**

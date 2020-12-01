@@ -33,7 +33,7 @@ class CompanyAdressController extends Controller
      */
     public function store(Request $request, int $id)
     {
-        $input =$request->except('_token');
+        $input = $request->except('_token');
 
         $arr_tojson = json_encode($input);
 
@@ -42,7 +42,7 @@ class CompanyAdressController extends Controller
         $companyaddress->addresses = $arr_tojson;
         $companyaddress->save();
 
-        if($companyaddress){
+        if($companyaddress) {
             toastr()->success("Adres bilgisi eklendi.");
             return redirect('company/show/' . $id . '#companycontact');
         }
@@ -77,7 +77,7 @@ class CompanyAdressController extends Controller
     {
         $addressInfo = CompanyAddress::where('id', $id)->first();
 
-        $input =$request->except('_token');
+        $input = $request->except('_token');
 
         $arr_tojson = json_encode($input);
 
@@ -85,7 +85,7 @@ class CompanyAdressController extends Controller
         $companyaddress->addresses = $arr_tojson;
         $companyaddress->save();
 
-        if($companyaddress){
+        if($companyaddress) {
             toastr()->success("Adres bilgisi güncellendi.");
             return redirect('company/show/' . $addressInfo->company_id . '#companycontact');
         }
@@ -103,13 +103,12 @@ class CompanyAdressController extends Controller
         $addressInfo = CompanyAddress::where('id', $id)->first();
         $destroy = CompanyAddress::destroy($id);
 
-        if($destroy){
+        if($destroy) {
             toastr()->success('Silme İşlemi Başarıyla Gerçekleşti!');
             return redirect('company/show/' . $addressInfo->id . '#companycontact');
         }
 
         toastr()->error('Silme İşlemi Yapılırken Bir Sorun Oluştu!');
-
         return redirect('company/show/' . $addressInfo->$id . '#companycontact');
     }
 }
