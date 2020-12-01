@@ -1,5 +1,7 @@
 ## Companies Crm
 
+Merhaba,
+
 ## Şirketler
 
 Şirket adı ve websitesi bilgilerini alıyorum website url ile sitenin html kodlarını curl kullanarak alıp veritabanına kaydediyorum yine website urli ile Page Speed api kullanarak ekran görüntüsü alıp veritabanına kaydediyorum.
@@ -14,5 +16,5 @@ Sınırsız sayıda adres eklenebiliyor. Adresler için adres, enlem, boylam ve 
 
 ## Tema
 
-Tema olarak lisanslı olarak satyın aldığım Materialize Admin Template kullanıyorum. 
+Tema olarak lisanslı olarak satın aldığım Materialize Admin Template kullanıyorum. 
 
