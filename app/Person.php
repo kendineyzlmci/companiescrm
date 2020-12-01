@@ -16,26 +16,18 @@ class Person extends Model
     }
 
     public function getPersonCreatedAtDateAttribute(){
-
         return date('d.m.Y', strtotime($this->created_at));
-
     }
 
     public function getPersonUpdatedAtDateAttribute(){
-
         return date('d.m.Y', strtotime($this->updated_at));
-
     }
 
     public function getPersonCreatedAtAttribute(){
-
         return date('d.m.Y H:i', strtotime($this->created_at));
-
     }
 
     public function getPersonUpdatedAtAttribute(){
-
         return date('d.m.Y H:i', strtotime($this->updated_at));
-
     }
 }

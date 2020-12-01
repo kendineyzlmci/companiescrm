@@ -18,7 +18,6 @@
 
         if ( $httpcode === 200 ) {
             $response = json_decode( $response ,true);
-
             $screenshot = $response['lighthouseResult']['audits']['final-screenshot']['details']['data'];
         }
 

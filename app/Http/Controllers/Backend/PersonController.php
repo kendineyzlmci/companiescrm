@@ -10,24 +10,6 @@ class PersonController extends Controller
 {
 
     /**
-     *
-     */
-    public function index()
-    {
-        //
-    }
-
-
-    /**
-     *
-     */
-    public function create()
-    {
-        //
-    }
-
-
-    /**
      * @param Request $request
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
@@ -59,31 +41,12 @@ class PersonController extends Controller
         return redirect($redirectUrl);
     }
 
-
-    /**
-     * @param $id
-     */
-    public function show($id)
-    {
-        //
-    }
-
-
-    /**
-     * @param $id
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-
     /**
      * @param Request $request
      * @param int $id
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function update(Request $request, int $id)
+    public function update(Request $request, int $id): bool
     {
         $redirectUrl = 'company/show/' . $request->get('company_id') . '#companyperson';
 

@@ -10,16 +10,12 @@ use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
-    public function index()
-    {
-        return view('backend.user.index');
-    }
 
-    public function add()
-    {
-        return view('backend.user.add');
-    }
-
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Validation\ValidationException
+     */
     public function store(Request $request)
     {
         $request->validate([
@@ -44,40 +40,57 @@ class UserController extends Controller
             $path = Storage::disk('local')->put('/public/backend/images', request()->file('photo_path'));
             $user->image = $path;
         }
+
         $user->save();
 
         if ($user) {
             toastr()->success('İşlem Tamamlandı.');
             return redirect()->route('users.detail',['id'=>$user->id]);
-        } else {
-            toastr()->error('İşlem Yapılırken Bir Sorun Oluştut.');
-            return back();
         }
+
+        toastr()->error('İşlem Yapılırken Bir Sorun Oluştut.');
+        return back();
     }
 
-    public function edit($id)
+    /**
+     * @param int $id
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function edit(int $id)
     {
         $uc = User::where('id', $id)->count();
+
         if ($uc != 0) {
             $userInfo = User::where('id', $id)->first();
             return view('backend.user.edit', ['userInfo' => $userInfo]);
-        } else {
-            abort(404);
         }
+
+        abort(404);
     }
 
-    public function detail($id)
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function detail(int $id)
     {
         $userCount = User::where('id', $id)->count();
+
         if ($userCount != 0) {
             $userInfo = User::where('id', $id)->first();
             return view('backend.user.detail', ['userInfo' => $userInfo]);
-        } else {
-            abort(404);
         }
+
+        abort(404);
     }
 
-    public function update(Request $request, int $id)
+    /**
+     * @param Request $request
+     * @param int $id
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function update(Request $request, int $id): bool
     {
         $request->validate([
             'first_name'            => 'required|string|min:2|max:255',
@@ -104,10 +117,10 @@ class UserController extends Controller
         if($request->old_password){
             if ($user->password == Hash::make($request->old_password)) {
                 $user->password = Hash::make($request->password);
-            } else {
-                toastr()->error('Mevcut Parolanız yanlıştır.');
-                return back();
             }
+
+            toastr()->error('Mevcut Parolanız yanlıştır.');
+            return back();
         }
 
         $user->save();
@@ -115,10 +128,10 @@ class UserController extends Controller
         if ($user) {
             toastr()->success('İşlem Başarılı.');
             return back();
-        } else {
-            toastr()->error('İşlem Yapılırken Bir Sorun Oluştut.');
-            return back();
         }
+
+        toastr()->error('İşlem Yapılırken Bir Sorun Oluştut.');
+        return back();
     }
 
     /**
@@ -127,15 +140,17 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(int $id)
     {
         $destroy = User::destroy($id);
+
         if($destroy){
             toastr()->success('Silme İşlemi Başarıyla Gerçekleşti!');
             return redirect()->route('users.list');
-        }else{
-            toastr()->error('Silme İşlemi Yapılırken Bir Sorun Oluştu!');
-            return back();
         }
+
+
+        toastr()->error('Silme İşlemi Yapılırken Bir Sorun Oluştu!');
+        return back();
     }
 }

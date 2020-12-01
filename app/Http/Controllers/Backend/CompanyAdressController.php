@@ -9,16 +9,6 @@ use Illuminate\Http\Request;
 
 class CompanyAdressController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
 
     /**
      * @param int $id
@@ -62,18 +52,6 @@ class CompanyAdressController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-
-    /**
      * @param int $id
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
@@ -95,7 +73,7 @@ class CompanyAdressController extends Controller
      * @param int $id
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function update(Request $request, int $id)
+    public function update(Request $request, int $id): bool
     {
         $addressInfo = CompanyAddress::where('id', $id)->first();
 

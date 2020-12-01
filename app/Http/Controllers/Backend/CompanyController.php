@@ -99,7 +99,7 @@ class CompanyController extends Controller
      * @param $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id): bool
     {
         $request->validate([
             'name' => 'required|string|min:2|max:255',
